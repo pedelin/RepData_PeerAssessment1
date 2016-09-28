@@ -33,7 +33,7 @@ hist(Tot_per_Day$steps,xlab = "Total steps per day [Steps]",main = "Total steps 
 
 ```r
 library(pander)
-panderOptions('round', 4)
+panderOptions('round', 2)
 day_mean <- mean(Tot_per_Day$steps)
 day_median <- median(Tot_per_Day$steps)
 ```
@@ -80,7 +80,7 @@ The number of NA's is 2304
 
 The choosen strategy is to take the mean of the 5-minute inteval for all days for the NA
 
-3.Create a new dataset that is equal to the original dataset but with the missing data filled in.
+3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 ```r
 Act_Data_mod <- Act_Data
@@ -95,7 +95,7 @@ for(i in 1:length(Logic_NA)){
 }
 ```
 
-4.Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
+4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
 ```r
 Tot_per_Day_mod <- aggregate(steps ~ date, data = Act_Data_mod,FUN = sum, na.rm=TRUE)
@@ -108,12 +108,12 @@ hist(Tot_per_Day_mod$steps,xlab = "Total steps per day [Steps]")
 day_mean_mod <- mean(Tot_per_Day_mod$steps)
 day_median_mod <- median(Tot_per_Day_mod$steps)
 ```
-The daily mean with filled in missing data is _10766_ steps and the daily median with filled in missing data is _10766_ steps. The absolute difference is _0_ for the mean and _1.189_ for the median.   
+The daily mean with filled in missing data is _10766_ steps and the daily median with filled in missing data is _10766_ steps. The absolute difference is _0_ for the mean and _1.19_ for the median.   
 
 ## Are there differences in activity patterns between weekdays and weekends?   
 For this part the weekdays() function may be of some help here. Use the dataset with the filled-in missing values for this part.
 
-1.Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
+1. Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
 
 ```r
 library(timeDate)
